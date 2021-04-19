@@ -48,7 +48,11 @@ interface TerminalStyle {
 
     rgb(red: number, green: number, blue: number): TerminalStyleBuilder;
 
+    hex(hex: string): TerminalStyleBuilder;
+
     bgRgb(red: number, green: number, blue: number): TerminalStyleBuilder;
+
+    bgHex(hex: string): TerminalStyleBuilder;
 }
 
 interface TerminalStyleBuilder extends TerminalStyle {
