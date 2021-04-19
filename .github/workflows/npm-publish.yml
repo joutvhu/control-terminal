@@ -1,0 +1,51 @@
+# This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
+# For more information see: https://help.github.com/actions/language-and-framework-guides/publishing-nodejs-packages
+
+name: Node.js Package
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - name: Install packages
+        run: npm install
+      - name: Check tslint
+        run: npm run lint
+      - name: Compile typescript
+        run: npm run build
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: lock-and-lib
+          path: |
+            lib
+            package-lock.json
+
+  publish-npm:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+          registry-url: https://registry.npmjs.org/
+      - name: Download artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: lock-and-lib
+      - name: Install packages
+        run: npm ci
+      - name: Publish package
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+      - uses: joutvhu/delete-artifact@v1
