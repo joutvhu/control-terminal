@@ -2,14 +2,15 @@
   "name": "control-terminal",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "build": "npm run clean && tsc --project tsconfig.json",
     "lint": "tslint --project tsconfig.json",
-    "clean": "rimraf -- lib",
-    "test": "node test.js"
+    "clean": "rimraf -- lib"
   },
-  "keywords": [],
+  "keywords": [
+
+  ],
   "author": "",
   "license": "MIT",
   "dependencies": {
