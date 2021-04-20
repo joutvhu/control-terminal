@@ -1,9 +1,5 @@
-export function rgbToRgb(r: number, g: number, b: number): number[] {
-    return [
-        r < 0 ? 0 : r > 255 ? 255 : r,
-        g < 0 ? 0 : g > 255 ? 255 : g,
-        b < 0 ? 0 : b > 255 ? 255 : b
-    ];
+export function validColors(...colors: number[]): number[] {
+    return colors.map(value => value < 0 ? 0 : value > 255 ? 255 : value);
 }
 
 export function hexToRgb(hex: string): number[] {
@@ -13,12 +9,8 @@ export function hexToRgb(hex: string): number[] {
         return [0, 0, 0];
     let {color}: any = matches.groups;
     if (color.length === 3)
-        color = color.split('').map((character: any) => character + character).join('');
+        color = color.split('').map((char: string) => char + char).join('');
     const integer = Number.parseInt(color, 16);
 
-    return [
-        (integer >> 16) & 0xFF,
-        (integer >> 8) & 0xFF,
-        integer & 0xFF
-    ];
+    return [(integer >> 16) & 0xFF, (integer >> 8) & 0xFF, integer & 0xFF];
 }

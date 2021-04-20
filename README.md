@@ -149,11 +149,25 @@ console.log(terminal.style.italic.bgBlack.white.underline('Hello'));
 console.log(terminal.style.white.inverse.bgMagentaBright('Hello'));
 ```
 
-### True color support
+### Support 256 color and True color
 
-Control Terminal support True color (16 million colors) on terminal applications.
+Control Terminal support 256 colors and True color (16 million colors) on terminal applications.
 
 The following color models can be used:
+
+256 colors:
+
+- `ansi256(code: number)`
+
+```js
+terminal.style.ansi256(12)('Blue text');
+```
+
+- `bgAnsi256(code: number)`
+
+```js
+terminal.style.bgAnsi256(12)('Blue background');
+```
 
 RGB:
 

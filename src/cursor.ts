@@ -1,6 +1,7 @@
 class TerminalCursor {
-    public escape(command: string): void {
+    public escape(command: string): TerminalCursor {
         process.stdout.write(`\x1b${command}`);
+        return this;
     }
 
     public goTo(line: number, column: number): TerminalCursor {
@@ -48,33 +49,40 @@ class TerminalCursor {
         return this;
     }
 
-    public hide(): void {
+    public hide(): TerminalCursor {
         process.stdout.write('\x1b[?25l');
+        return this;
     }
 
-    public clearScreen(): void {
+    public clearScreen(): TerminalCursor {
         process.stdout.write('\x1b[2J');
+        return this;
     }
 
-    public reset(): void {
+    public reset(): TerminalCursor {
         process.stdout.write('\x1bc');
+        return this;
     }
 
-    public eraseToEndLine(): void {
+    public eraseToEndLine(): TerminalCursor {
         process.stdout.write('\x1b[K');
+        return this;
     }
 
-    public eraseToEndScreen(): void {
+    public eraseToEndScreen(): TerminalCursor {
         process.stdout.write('\x1b[J');
+        return this;
     }
 
-    public eraseCurrentLine(): void {
+    public eraseCurrentLine(): TerminalCursor {
         process.stdout.write('\r\x1b[K');
+        return this;
     }
 
-    public erasePreviousLine(line: number = 1): void {
+    public erasePreviousLine(line: number = 1): TerminalCursor {
         if (typeof line === 'number' && line > 0)
             process.stdout.write(`\x1b[${line}A\r\x1b[K`);
+        return this;
     }
 
     public save(): TerminalCursor {
