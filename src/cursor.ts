@@ -1,11 +1,19 @@
 class TerminalCursor {
-    public gotoStart(): void {
-        process.stdout.write(`\x1b[H`);
+    public escape(command: string) {
+        process.stdout.write(`\x1b${command}`);
     }
 
     public goTo(line: number, column: number): void {
         if (typeof line === 'number' && line > 0 && typeof column === 'number' && column > 0)
             process.stdout.write(`\x1b[${line};${line}H`);
+    }
+
+    public gotoStart(): void {
+        process.stdout.write(`\x1b[H`);
+    }
+
+    public carriageReturn(): void {
+        process.stdout.write(`\r`);
     }
 
     public up(line: number = 1): void {
