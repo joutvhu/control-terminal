@@ -1,18 +1,51 @@
 {
   "name": "control-terminal",
-  "version": "1.0.0",
-  "description": "",
-  "main": "lib/index.js",
+  "version": "1.0.0-alpha.0",
+  "description": "Control terminal cursor, screen and create string styling",
   "scripts": {
     "build": "npm run clean && tsc --project tsconfig.json",
     "lint": "tslint --project tsconfig.json",
     "clean": "rimraf -- lib"
   },
   "keywords": [
-
+    "console",
+    "color",
+    "terminal",
+    "logging",
+    "styling",
+    "cursor"
   ],
-  "author": "",
+  "author": {
+    "name": "Giao Ho",
+    "email": "joutvhu@gmail.com",
+    "url": "https://github.com/joutvhu"
+  },
   "license": "MIT",
+  "engines": {
+    "node": ">=8"
+  },
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "homepage": "https://github.com/joutvhu/control-terminal#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/joutvhu/control-terminal.git"
+  },
+  "bugs": {
+    "url": "https://github.com/joutvhu/control-terminal/issues"
+  },
+  "directories": {
+    "lib": "lib"
+  },
+  "files": [
+    "lib",
+    "README.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "tag": "alpha"
+  },
   "dependencies": {
     "tslib": "^2.1.0"
   },
