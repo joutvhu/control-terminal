@@ -36,6 +36,10 @@ terminal.cursor.erasePreviousLine();
 console.log(terminal.style.bgRgb(255, 123, 114).underline('Underline'));
 ```
 
+Output:
+
+![example-log](doc/media/example-log.png)
+
 ## Cursor
 
 The methods in `terminal.cursor` namespace will help you control cursor and terminal.
@@ -125,22 +129,46 @@ Background colors:
 - `bgCyanBright`
 - `bgWhiteBright`
 
+Example:
+
+```js
+console.log(terminal.style.bold.bgCyan.green('Hello'));
+
+console.log(terminal.style.italic.bgBlack.white.underline('Hello'));
+
+console.log(terminal.style.white.inverse.bgMagentaBright('Hello'));
+```
+
 ### True color support
 
 Control Terminal support True color (16 million colors) on terminal applications.
 
+The following color models can be used:
+
 RGB:
 
 - `rgb(red: number, green: number, blue: number)`
-  - Example: `terminal.style.rgb(88, 166, 255)('Blue text');`
+
+```js
+terminal.style.rgb(88, 166, 255)('Blue text');
+```
 
 - `bgRgb(red: number, green: number, blue: number)`
-  - Example: `terminal.style.bgRgb(88, 166, 255)('Blue background ');`
+
+```js
+terminal.style.bgRgb(88, 166, 255)('Blue background ');
+```
 
 Hex:
 
 - `hex(hex: string)`
-  - Example: `terminal.style.hex('#58a6ff')('Blue text');`
+
+```js
+terminal.style.hex('#58a6ff')('Blue text');
+```
 
 - `bgHex(hex: string)`
-  - Example: `terminal.style.bgHex('#58a6ff')('Blue background ');`
+
+```js
+terminal.style.bgHex('#58a6ff')('Blue background ');
+```
