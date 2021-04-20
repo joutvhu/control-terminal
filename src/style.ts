@@ -6,11 +6,15 @@ interface TerminalStyle {
     dim: TerminalStyleBuilder;
     italic: TerminalStyleBuilder;
     underline: TerminalStyleBuilder;
-    blink: TerminalStyleBuilder;
-    overline: TerminalStyleBuilder;
+    slowBlink: TerminalStyleBuilder;
+    rapidBlink: TerminalStyleBuilder;
     inverse: TerminalStyleBuilder;
     hidden: TerminalStyleBuilder;
     strikethrough: TerminalStyleBuilder;
+    fraktur: TerminalStyleBuilder;
+    framed: TerminalStyleBuilder;
+    encircled: TerminalStyleBuilder;
+    overline: TerminalStyleBuilder;
 
     black: TerminalStyleBuilder;
     red: TerminalStyleBuilder;
@@ -62,15 +66,19 @@ interface TerminalStyleBuilder extends TerminalStyle {
 const STYLES: any = {
     modifier: {
         reset: [0, 0],
-        bold: [1, 22],
+        bold: [1, 21],
         dim: [2, 22],
         italic: [3, 23],
         underline: [4, 24],
-        blink: [5, 25],
-        overline: [53, 55],
+        slowBlink: [5, 25],
+        rapidBlink: [6, 26],
         inverse: [7, 27],
         hidden: [8, 28],
-        strikethrough: [9, 29]
+        strikethrough: [9, 29],
+        fraktur: [20, 23],
+        framed: [51, 54],
+        encircled: [52, 54],
+        overline: [53, 55]
     },
     color: {
         black: 30,
