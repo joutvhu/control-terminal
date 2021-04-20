@@ -1,4 +1,4 @@
-import {hexToRgb, rgbToRgb} from './util';
+import {hexToRgb, validColors} from './util';
 
 interface TerminalStyle {
     reset: TerminalStyleBuilder;
@@ -50,9 +50,13 @@ interface TerminalStyle {
     bgCyanBright: TerminalStyleBuilder;
     bgWhiteBright: TerminalStyleBuilder;
 
+    ansi256(code: number): TerminalStyleBuilder;
+
     rgb(red: number, green: number, blue: number): TerminalStyleBuilder;
 
     hex(hex: string): TerminalStyleBuilder;
+
+    bgAnsi256(code: number): TerminalStyleBuilder;
 
     bgRgb(red: number, green: number, blue: number): TerminalStyleBuilder;
 
@@ -89,8 +93,6 @@ const STYLES: any = {
         magenta: 35,
         cyan: 36,
         white: 37,
-
-        // Bright color
         blackBright: 90,
         redBright: 91,
         greenBright: 92,
@@ -109,8 +111,6 @@ const STYLES: any = {
         bgMagenta: 45,
         bgCyan: 46,
         bgWhite: 47,
-
-        // Bright color
         bgBlackBright: 100,
         bgRedBright: 101,
         bgGreenBright: 102,
@@ -153,9 +153,15 @@ function defineProperties(builder: TerminalStyleBuilder | any, styles: [string, 
             }
         };
     }
+    properties.ansi256 = {
+        value: (code: number): TerminalStyleBuilder => {
+            [code] = validColors(code);
+            return createBuilder([...styles, [`\x1b[38;5;${code}m`, '\x1b[39m']]);
+        }
+    };
     properties.rgb = {
         value: (red: number, green: number, blue: number): TerminalStyleBuilder => {
-            [red, green, blue] = rgbToRgb(red, green, blue);
+            [red, green, blue] = validColors(red, green, blue);
             return createBuilder([...styles, [`\x1b[38;2;${red};${green};${blue}m`, '\x1b[39m']]);
         }
     };
@@ -173,9 +179,15 @@ function defineProperties(builder: TerminalStyleBuilder | any, styles: [string, 
             }
         };
     }
+    properties.bgAnsi256 = {
+        value: (code: number): TerminalStyleBuilder => {
+            [code] = validColors(code);
+            return createBuilder([...styles, [`\x1b[48;5;${code}m`, '\x1b[49m']]);
+        }
+    };
     properties.bgRgb = {
         value: (red: number, green: number, blue: number): TerminalStyleBuilder => {
-            [red, green, blue] = rgbToRgb(red, green, blue);
+            [red, green, blue] = validColors(red, green, blue);
             return createBuilder([...styles, [`\x1b[48;2;${red};${green};${blue}m`, '\x1b[49m']]);
         }
     };

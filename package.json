@@ -1,6 +1,6 @@
 {
   "name": "control-terminal",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0-alpha.2",
   "description": "Control terminal cursor, screen and create string styling",
   "scripts": {
     "build": "npm run clean && tsc --project tsconfig.json",
