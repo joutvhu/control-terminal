@@ -59,10 +59,20 @@ Clear screen methods:
 
 - `clearScreen()`: Clear the screen
 - `reset()`: Reset device
-- `eraseCurrentLine()`: Erase the current line of the cursor
 - `eraseToEndLine()`: Erase to the end of line that begins the cursor's current position
 - `eraseToEndScreen()`: Erase to the end of screen that begins the cursor's current position
+- `eraseCurrentLine()`: Erase the current line of the cursor
+  ```js
+  // Two these are equivalent.
+  terminal.cursor.eraseCurrentLine();
+  terminal.cursor.carriageReturn().eraseToEndLine();
+  ```
 - `erasePreviousLine(line: number = 1)`: Erase the previous line from the cursor
+  ```js
+  // Two these are equivalent.
+  terminal.cursor.erasePreviousLine(line);
+  terminal.cursor.up(line).eraseCurrentLine();
+  ```
 
 Other methods:
 
