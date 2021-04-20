@@ -64,7 +64,7 @@ Clear screen methods:
 - `eraseToEndScreen()`: Erase to the end of screen that begins the cursor's current position
 - `erasePreviousLine(line: number = 1)`: Erase the previous line from the cursor
 
-Other:
+Other methods:
 
 - `hide()`: Hide cursor
 - `save()`: Save cursor position
@@ -156,7 +156,7 @@ terminal.style.rgb(88, 166, 255)('Blue text');
 - `bgRgb(red: number, green: number, blue: number)`
 
 ```js
-terminal.style.bgRgb(88, 166, 255)('Blue background ');
+terminal.style.bgRgb(88, 166, 255)('Blue background');
 ```
 
 Hex:
@@ -170,5 +170,5 @@ terminal.style.hex('#58a6ff')('Blue text');
 - `bgHex(hex: string)`
 
 ```js
-terminal.style.bgHex('#58a6ff')('Blue background ');
+terminal.style.bgHex('#58a6ff')('Blue background');
 ```
