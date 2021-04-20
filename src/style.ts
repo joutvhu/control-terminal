@@ -1,4 +1,4 @@
-import {hexToRgb} from './util';
+import {hexToRgb, rgbToRgb} from './util';
 
 interface TerminalStyle {
     reset: TerminalStyleBuilder;
@@ -147,6 +147,7 @@ function defineProperties(builder: TerminalStyleBuilder | any, styles: [string, 
     }
     properties.rgb = {
         value: (red: number, green: number, blue: number): TerminalStyleBuilder => {
+            [red, green, blue] = rgbToRgb(red, green, blue);
             return createBuilder([...styles, [`\x1b[38;2;${red};${green};${blue}m`, '\x1b[39m']]);
         }
     };
@@ -166,6 +167,7 @@ function defineProperties(builder: TerminalStyleBuilder | any, styles: [string, 
     }
     properties.bgRgb = {
         value: (red: number, green: number, blue: number): TerminalStyleBuilder => {
+            [red, green, blue] = rgbToRgb(red, green, blue);
             return createBuilder([...styles, [`\x1b[48;2;${red};${green};${blue}m`, '\x1b[49m']]);
         }
     };
