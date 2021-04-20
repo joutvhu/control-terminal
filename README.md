@@ -5,19 +5,19 @@
 
 ## Installation
 
-Install using pnpm:
+Install using `pnpm`:
 
 ```shell
 pnpm add control-terminal
 ```
 
-Or yarn:
+Or `yarn`:
 
 ```shell
 yarn add control-terminal
 ```
 
-Or npm:
+Or `npm`:
 
 ```shell
 npm i control-terminal
